@@ -1,13 +1,12 @@
-DellLapTop = function(renderer,scene,texturePath,screenLength,screenWidth,closed){
+DellLapTop = function(renderer,scene,texturePath,screenLength,screenWidth,closed,microcache){
   closed = closed || false;
   var group = new THREE.Group();
-  var texture = THREE.ImageUtils.loadTexture('image/bumpy-black-plastic-texture.png', {}, function() {
-  });
+
+  var texture =   microcache.getSet('bumpyPlasticCacheTexture', new THREE.TextureLoader().load('image/bumpy-black-plastic-texture.png'));
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
   texture.repeat.set(1, 1 );
-  var frontTexture = THREE.ImageUtils.loadTexture(texturePath, {}, function() {
-  });
+  var frontTexture = new THREE.TextureLoader().load(texturePath);
 
 
   frontTexture.wrapS = THREE.RepeatWrapping;
@@ -26,9 +25,7 @@ DellLapTop = function(renderer,scene,texturePath,screenLength,screenWidth,closed
   var cubeMaterials = new THREE.MeshFaceMaterial( cubeMaterialArray );
 
 
-  var keyboardTexture = THREE.ImageUtils.loadTexture('image/dellKeyBoard.png', {}, function() {
-    //renderer.render(scene);
-  });
+  var keyboardTexture = microcache.getSet('laptopKeyBoardCacheTexture',new THREE.TextureLoader().load('image/dellKeyBoard.png'));
 
   keyboardTexture.wrapS = THREE.RepeatWrapping;
   keyboardTexture.wrapT = THREE.RepeatWrapping;

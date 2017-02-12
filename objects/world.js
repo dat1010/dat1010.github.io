@@ -1,8 +1,6 @@
 World = function(renderer,scene){
   var group = new THREE.Group();
-  var texture = THREE.ImageUtils.loadTexture('image/cement.png', {}, function() {
-    //renderer.render(scene);
-  });
+  var texture = new THREE.TextureLoader().load('image/cement.png');
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
   texture.repeat.set( 5,5 );

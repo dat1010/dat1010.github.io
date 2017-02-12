@@ -1,14 +1,10 @@
-FilingCabinet = function(renderer,scene){
+FilingCabinet = function(renderer,scene,deskGeometry,microcache){
   var group = new THREE.Group();
-  var texture = THREE.ImageUtils.loadTexture('image/cement.png', {}, function() {
-    //renderer.render(scene);
-  });
+  var texture = microcache.getSet('cementCacheTexture', new THREE.TextureLoader().load('image/cement.png'));
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
   texture.repeat.set( 1, 1 );
-  var frontTexture = THREE.ImageUtils.loadTexture('image/fileCabinet.png', {}, function() {
-    //renderer.render(scene);
-  });
+  var frontTexture =   microcache.getSet('fileCabinetCacheTexture', new THREE.TextureLoader().load('image/fileCabinet.png'));
   frontTexture.wrapS = THREE.RepeatWrapping;
   frontTexture.wrapT = THREE.RepeatWrapping;
   frontTexture.repeat.set( 1, 1 );
@@ -28,7 +24,6 @@ FilingCabinet = function(renderer,scene){
   var geometrySquare = new THREE.BoxGeometry(30,84,45);
   var middleLeg = new THREE.Mesh(geometrySquare, cubeMaterials);
 
-
   group.add(middleLeg);
-  return group;
+  return middleLeg;
 }

@@ -1,15 +1,11 @@
 KeyBoard = function(renderer,scene,keyboardPath){
   keyboardPath = keyboardPath || 'image/keyboard.png';
   var group = new THREE.Group();
-  var texture = THREE.ImageUtils.loadTexture('image/bumpy-black-plastic-texture.png', {}, function() {
-    //renderer.render(scene);
-  });
+  var texture = new THREE.TextureLoader().load('image/bumpy-black-plastic-texture.png');
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
   texture.repeat.set(1, 1 );
-  var frontTexture = THREE.ImageUtils.loadTexture(keyboardPath, {}, function() {
-    //renderer.render(scene);
-  });
+  var frontTexture = new THREE.TextureLoader().load(keyboardPath);
 
 
   frontTexture.wrapS = THREE.RepeatWrapping;
