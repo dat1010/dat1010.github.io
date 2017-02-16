@@ -229,52 +229,52 @@ function init() {
 
         function personSays(myPositionX,myPositionZ){
             if (isInBubble(myPositionX,myPositionZ,-399,48)){
-              return "David says: Im making a game.";
+              return "David: Im making a game.";
             }
             if (isInBubble(myPositionX,myPositionZ,45,65)){
-              return "Tom says: There once was this gal....";
+              return "Tom: There once was this gal....";
             }
             if (isInBubble(myPositionX,myPositionZ,-280,50)){
-              return "Josh says: You're welcome";
+              return "Josh: You're welcome";
             }
             if (isInBubble(myPositionX,myPositionZ,-353,-35)){
-              return "Brandon says: Now we\'re makin bacon.";
+              return "Brandon: Now we\'re makin bacon.";
             }
             if (isInBubble(myPositionX,myPositionZ,-525,-150)){
-              return "Jeremy says: I broke my slinky!";
+              return "Jeremy: I broke my slinky!";
             }
             if (isInBubble(myPositionX,myPositionZ,-620,-140)){
-              return "Michael says: I\'m busy";
+              return "Michael: I\'m busy";
             }
             if (isInBubble(myPositionX,myPositionZ,-570,-64)){
-              return "Anthony says: Not another P44 issue.";
+              return "Anthony: Not another P44 issue.";
             }
             if (isInBubble(myPositionX,myPositionZ,55,-105)){
-              return "V says: ";
+              return "V: ";
             }
             if (isInBubble(myPositionX,myPositionZ,143,-110)){
-              return "D\'lisa says: Please update your branch with QA.";
+              return "D\'lisa: Please update your branch with QA.";
             }
             if (isInBubble(myPositionX,myPositionZ,134,78)){
-              return "Mike says: We're rolling out tonight.";
+              return "Mike: We're rolling out tonight.";
             }
             if (isInBubble(myPositionX,myPositionZ,101,-190)){
-              return "Aaron says: I have another density issue.";
+              return "Aaron: I have another density issue.";
             }
             if (isInBubble(myPositionX,myPositionZ,647,403)){
-              return "Del says: DBs are up to date.";
+              return "Del: DBs are up to date.";
             }
             if (isInBubble(myPositionX,myPositionZ,647,210)){
-              return "Jason says: There are donuts.";
+              return "Jason: There are donuts.";
             }
             if (isInBubble(myPositionX,myPositionZ,647,89)){
-              return "Mari says: There\'s another issue in the queue.";
+              return "Mari: There\'s another issue in the queue.";
             }
             if (isInBubble(myPositionX,myPositionZ,647,-94)){
-              return "Brad says: Ill fix that for you.";
+              return "Brad: Ill fix that for you.";
             }
             if (isInBubble(myPositionX,myPositionZ,689,-598)){
-              return "Blake says: We're getting pizza!";
+              return "Blake: We're getting pizza!";
             }
             return "";
         }
