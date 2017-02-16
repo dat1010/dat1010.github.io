@@ -1,7 +1,7 @@
 MainWalls = function(renderer,scene,microcache) {
   var group = new THREE.Group();
 
-  var texture = microcache.getSet('wallTexture', new THREE.TextureLoader().load('image/walltexture.png'));
+  var texture = microcache.getSet('wallTexture', new THREE.TextureLoader().load('image/wallTexture.png'));
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
   texture.repeat.set( 2, 2 );
@@ -12,7 +12,10 @@ MainWalls = function(renderer,scene,microcache) {
   northWall.position.x = 700;
 
 
-  var otherTexture = microcache.getSet('greenWallTexture', new THREE.TextureLoader().load('image/greenTexture.png'));
+  var otherTexture = microcache.getSet('greenWallTexture', new THREE.TextureLoader().load('image/lightTanTexture.png'));
+  otherTexture.wrapS = THREE.RepeatWrapping;
+  otherTexture.wrapT = THREE.RepeatWrapping;
+  otherTexture.repeat.set(5, 5 );
   var otherMaterial = new THREE.MeshBasicMaterial({map: otherTexture});
   //TODO will need to add windows to this later.
   var southWall = new THREE.Mesh(geometrySquare, gateMaterial);
@@ -50,7 +53,7 @@ MainWalls = function(renderer,scene,microcache) {
   northOfficeServerWall.position.x = 550;
 
   var northOfficeServerWall1 = new THREE.Mesh(northOfficeWidth, gateMaterial);
-  northOfficeServerWall1.position.z = 400;
+  northOfficeServerWall1.position.z = 500;
   northOfficeServerWall1.position.x = 550;
 
   var northOfficelength = new THREE.BoxGeometry(1110,280,5);
@@ -74,6 +77,10 @@ MainWalls = function(renderer,scene,microcache) {
   mwhiteboard.position.z = -747.5;
   mwhiteboard.position.y = 20;
 
+  var brandonWhiteboard = new THREE.Mesh(whiteboardGeometry, whiteBoardMaterial);
+  brandonWhiteboard.rotation.y = Math.PI/2;
+  brandonWhiteboard.position.z = -25;
+  brandonWhiteboard.position.x = 397;
 
   var isDoor = new Door(renderer,scene,microcache);
   isDoor.position.x = 700;
@@ -85,7 +92,7 @@ MainWalls = function(renderer,scene,microcache) {
 
   var blakeOfficeDoor = new Door(renderer,scene,microcache);
   blakeOfficeDoor.position.x = 400;
-  blakeOfficeDoor.position.z = 480;
+  blakeOfficeDoor.position.z = 570;
 
   var supportDoor = new Door(renderer,scene,microcache);
   supportDoor.rotation.y = Math.PI/2;
@@ -94,17 +101,18 @@ MainWalls = function(renderer,scene,microcache) {
 
   var serverWindow = new ServerRoomWindow(renderer,scene,microcache);
   serverWindow.position.x = 400;
-  serverWindow.position.z = 100;
+  serverWindow.position.z = 215;
 
   var serverRoomDoor = new Door(renderer,scene,microcache);
   serverRoomDoor.position.x = 400;
-  serverRoomDoor.position.z = 350;
+  serverRoomDoor.position.z = 440;
 
   var boilerRoomDoor = new Door(renderer,scene,microcache);
   boilerRoomDoor.rotation.y = Math.PI/2;
   boilerRoomDoor.position.z = -113;
   boilerRoomDoor.position.x = -320;
 
+  group.add(brandonWhiteboard);
   group.add(boilerRoomDoor);
   group.add(serverRoomDoor);
   group.add(serverWindow);

@@ -35,25 +35,25 @@ Monitor = function(renderer,scene,texturePath,screenLength,screenWidth,microcach
   stand.position.y = -18;
   stand.rotation.y = Math.PI;
   var bottomStandGeometry = new THREE.BoxGeometry(20,2,8);
-  var bottonStand = new THREE.Mesh(bottomStandGeometry,cubeMaterials);
+  var bottonStand = new THREE.Mesh(bottomStandGeometry,standMaterial);
   bottonStand.position.y = -22;
   bottonStand.rotation.y = Math.PI;
-  //group.add(stand);
-  //group.add(bottonStand);
-  //group.add(screen);
+  group.add(stand);
+  group.add(bottonStand);
+  group.add(screen);
   //http://stackoverflow.com/questions/30245990/how-to-merge-two-geometries-or-meshes-using-three-js-r71
   //Work on this more. must be efficient
-  var singleGeometry = new THREE.Geometry();
-  stand.updateMatrix();
-  singleGeometry.merge(stand.geometry, stand.matrix);
-  bottonStand.updateMatrix();
-  singleGeometry.merge(bottonStand.geometry,bottonStand.matrix);
-  screen.updateMatrix();
-  singleGeometry.merge(screen.geometry,screen.matrix);
-  singleGeometry.mergeVertices();
-  var mesh = new THREE.Mesh(singleGeometry, cubeMaterials);
-  mesh.geometry.computeFaceNormals();
-  mesh.geometry.computeVertexNormals();
-  group.add(mesh);
+  //var singleGeometry = new THREE.Geometry();
+  //stand.updateMatrix();
+  //singleGeometry.merge(stand.geometry, stand.matrix);
+  //bottonStand.updateMatrix();
+  //singleGeometry.merge(bottonStand.geometry,bottonStand.matrix);
+  ///screen.updateMatrix();
+  //singleGeometry.merge(screen.geometry,screen.matrix);
+  //singleGeometry.mergeVertices();
+  //var mesh = new THREE.Mesh(singleGeometry, cubeMaterials);
+  //mesh.geometry.computeFaceNormals();
+  //mesh.geometry.computeVertexNormals();
+  //group.add(mesh);
   return group;
 }

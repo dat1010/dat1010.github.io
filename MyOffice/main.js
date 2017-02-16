@@ -65,7 +65,9 @@ function init() {
   			var prevTime = performance.now();
   			var velocity = new THREE.Vector3();
   			function init() {
+          $("#messageBox").hide();
   				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 20000 );
+
 
   				scene = new THREE.Scene();
   				//scene.fog = new THREE.Fog( 0xffffff, 0, 750 );
@@ -131,10 +133,6 @@ function init() {
   				document.addEventListener( 'keyup', onKeyUp, false );
   				raycaster = new THREE.Raycaster( new THREE.Vector3(), new THREE.Vector3( 0, - 1, 0 ), 0, 10 );
   				// floor
-
-
-
-
                /*var light2 = new THREE.SpotLight(0xff99944);
                light2.position.set(-1, -1, -1);
                scene.add(light2);*/
@@ -187,6 +185,15 @@ function init() {
            qaDesk.position.y = -80;
            qaDesk.rotation.y = Math.PI/2;
 
+           var blakeDesk = new BlakesNewDesk(renderer,scene,microcache);
+           scene.add(blakeDesk);
+           blakeDesk.rotation.y = -Math.PI/2;
+           blakeDesk.position.x = 720;
+           blakeDesk.position.z = -583;
+
+           var support = new SupportDesk(renderer,scene,microcache);
+           scene.add(support);
+
            var zarbeckCabinet = new FilingCabinet(renderer,scene,null,microcache);
            scene.add(zarbeckCabinet);
            zarbeckCabinet.position.x = -600;
@@ -194,26 +201,8 @@ function init() {
            zarbeckCabinet.position.y = -80;
            zarbeckCabinet.rotation.y = -Math.PI/3;
 
-           var monitors = new AddMonitors(renderer, scene,microcache);
+          var monitors = new AddMonitors(renderer, scene,microcache);
 
-  			/*	geometry = new THREE.BoxGeometry( 20, 20, 20 );
-  				for ( var i = 0, l = geometry.faces.length; i < l; i ++ ) {
-  					var face = geometry.faces[ i ];
-  					face.vertexColors[ 0 ] = new THREE.Color().setHSL( Math.random() * 0.3 + 0.5, 0.75, Math.random() * 0.25 + 0.75 );
-  					face.vertexColors[ 1 ] = new THREE.Color().setHSL( Math.random() * 0.3 + 0.5, 0.75, Math.random() * 0.25 + 0.75 );
-  					face.vertexColors[ 2 ] = new THREE.Color().setHSL( Math.random() * 0.3 + 0.5, 0.75, Math.random() * 0.25 + 0.75 );
-  				}
-  				for ( var i = 0; i < 500; i ++ ) {
-  					material = new THREE.MeshPhongMaterial( { specular: 0xffffff, shading: THREE.FlatShading, vertexColors: THREE.VertexColors } );
-  					var mesh = new THREE.Mesh( geometry, material );
-  					mesh.position.x = Math.floor( Math.random() * 20 - 10 ) * 20;
-  					mesh.position.y = Math.floor( Math.random() * 20 ) * 20 + 10;
-  					mesh.position.z = Math.floor( Math.random() * 20 - 10 ) * 20;
-  					scene.add( mesh );
-  					material.color.setHSL( Math.random() * 0.2 + 0.5, 0.75, Math.random() * 0.25 + 0.75 );
-  					objects.push( mesh );
-  				}*/
-  				//
   				renderer = new THREE.WebGLRenderer();
   				renderer.setClearColor( 0xffffff );
   				renderer.setPixelRatio( window.devicePixelRatio );
@@ -228,6 +217,7 @@ function init() {
   				renderer.setSize( window.innerWidth, window.innerHeight );
   			}
 
+
         function isInBubble(myPositionX,myPositionZ,x,z){
           var distance;
           distance = Math.sqrt(Math.pow((myPositionX-x), 2) + Math.pow(myPositionZ-z,2));
@@ -236,6 +226,59 @@ function init() {
           }
           return false;
         }
+
+        function personSays(myPositionX,myPositionZ){
+            if (isInBubble(myPositionX,myPositionZ,-399,48)){
+              return "David says: Im making a game.";
+            }
+            if (isInBubble(myPositionX,myPositionZ,45,65)){
+              return "Tom says: There once was this gal....";
+            }
+            if (isInBubble(myPositionX,myPositionZ,-280,50)){
+              return "Josh says: You're welcome";
+            }
+            if (isInBubble(myPositionX,myPositionZ,-353,-35)){
+              return "Brandon says: Now we\'re makin bacon.";
+            }
+            if (isInBubble(myPositionX,myPositionZ,-525,-150)){
+              return "Jeremy says: I broke my slinky!";
+            }
+            if (isInBubble(myPositionX,myPositionZ,-620,-140)){
+              return "Michael says: I\'m busy";
+            }
+            if (isInBubble(myPositionX,myPositionZ,-570,-64)){
+              return "Anthony says: Not another P44 issue.";
+            }
+            if (isInBubble(myPositionX,myPositionZ,55,-105)){
+              return "V says: ";
+            }
+            if (isInBubble(myPositionX,myPositionZ,143,-110)){
+              return "D\'lisa says: Please update your branch with QA.";
+            }
+            if (isInBubble(myPositionX,myPositionZ,134,78)){
+              return "Mike says: We're rolling out tonight.";
+            }
+            if (isInBubble(myPositionX,myPositionZ,101,-190)){
+              return "Aaron says: I have another density issue.";
+            }
+            if (isInBubble(myPositionX,myPositionZ,647,403)){
+              return "Del says: DBs are up to date.";
+            }
+            if (isInBubble(myPositionX,myPositionZ,647,210)){
+              return "Jason says: There are donuts.";
+            }
+            if (isInBubble(myPositionX,myPositionZ,647,89)){
+              return "Mari says: There\'s another issue in the queue.";
+            }
+            if (isInBubble(myPositionX,myPositionZ,647,-94)){
+              return "Brad says: Ill fix that for you.";
+            }
+            if (isInBubble(myPositionX,myPositionZ,689,-598)){
+              return "Blake says: We're getting pizza!";
+            }
+            return "";
+        }
+
 
   			function animate() {
   				requestAnimationFrame( animate );
@@ -265,7 +308,7 @@ function init() {
   						controls.getObject().position.y = 10;
   						canJump = true;
   					}
-            //console.log('x=' + controls.getObject().position.x + ' y=' + controls.getObject().position.y + ' z=' + controls.getObject().position.z);
+            console.log('x=' + controls.getObject().position.x + ' y=' + controls.getObject().position.y + ' z=' + controls.getObject().position.z);
             if (resetPosition == true){
               controls.getObject().position.y = 10;
               controls.getObject().position.z = 0;
@@ -278,9 +321,11 @@ function init() {
               firstLoad = false;
             }
             if (activate == true){
-              if (isInBubble(controls.getObject().position.x,controls.getObject().position.z,-399,48) ){
-                //alter("It worked");
-                //console.log("test");
+              var message = personSays(controls.getObject().position.x,controls.getObject().position.z);
+              console.log(message);
+              if ( message ){
+                $("#messageBox").text(message);
+                $("#messageBox").show().delay(4000).fadeOut();
               }
             }
 
