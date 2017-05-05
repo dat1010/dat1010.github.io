@@ -50,7 +50,7 @@ function init() {
   					element.requestPointerLock();
   				}, false );
   			} else {
-  				instructions.innerHTML = 'Use Chrome or firefox to load.';
+  				instructions.innerHTML = 'Use Chrome or Firefox to load.';
   			}
   			init();
   			animate();
