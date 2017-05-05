@@ -50,7 +50,7 @@ function init() {
   					element.requestPointerLock();
   				}, false );
   			} else {
-  				instructions.innerHTML = 'You should be ashamed of yourself!';
+  				instructions.innerHTML = 'Use Chrome or firefox to load.';
   			}
   			init();
   			animate();
